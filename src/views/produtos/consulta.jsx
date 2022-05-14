@@ -55,7 +55,7 @@ export default class ConsultaProdutos extends React.Component{
                                         <th>
                                             {
                                                 <Link to={`/cadastro-produtos/${produto.sku}`} key={produto.sku}>
-                                                        <button className="btn btn-primary">Editar</button> 
+                                                    <button className="btn btn-primary">Editar</button> 
                                                 </Link>
                                             }
                                             <button className="btn btn-danger">Remover</button>
