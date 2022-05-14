@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from 'react-router-dom'
 
 import Home from './views/home';
 import CadastroProduto from "./views/produtos/cadastro";
@@ -10,9 +10,20 @@ function Rotas(){
     return (
 
             <Routes>
-                <Route exact path="/cadastro-produtos" element={<CadastroProduto/>} />
-                <Route exact path="/consulta-produtos" element={<ConsultaProdutos/>} />
                 <Route exact path="/" element={<Home/>} />
+                <Route path="/cadastro-produtos" element={<CadastroProduto/>}>
+                    <Route path=":sku"  element={<CadastroProduto/>} />
+                </Route>
+                <Route path="/consulta-produtos" element={<ConsultaProdutos/>} />
+                
+                <Route
+                    path="*"
+                    element={
+                        <main style={{ padding: "1rem" }}>
+                        <p>There's nothing here!</p>
+                        </main>
+                    }
+                />
             </Routes>
 
     )
@@ -20,3 +31,4 @@ function Rotas(){
 
 
 export default Rotas;
+

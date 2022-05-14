@@ -1,5 +1,6 @@
 import React from "react"
 import ProdutoService from "../../app/produtoService";
+import { useParams } from "react-router-dom";
 
 const estadoInicial = {
     nome: '',
@@ -46,6 +47,10 @@ export default class CadastroProduto extends React.Component{
 
     limpaCampos = () => {
         this.setState(estadoInicial);
+    }
+
+    componentDidMount(){
+        //let params = useParams();
     }
 
     render(){

@@ -1,15 +1,15 @@
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Rotas from './rotas'
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="container">
         <Navbar/>
         <Rotas/>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
