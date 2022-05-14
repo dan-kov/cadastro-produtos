@@ -1,6 +1,5 @@
 import React from "react"
 import ProdutoService from "../../app/produtoService";
-import { useParams } from "react-router-dom";
 
 const estadoInicial = {
     nome: '',
@@ -16,9 +15,11 @@ export default class CadastroProduto extends React.Component{
 
     state = estadoInicial;
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.service = new ProdutoService();
+       // this.state = { sku: props.sku };
+       //console.log("PROPS: "+JSON.stringify(props));
     }
 
     onChange = (event) => {
@@ -51,9 +52,22 @@ export default class CadastroProduto extends React.Component{
 
     componentDidMount(){
         //let params = useParams();
+        const sku = this.props.sku;
+        //console.log('sku: '+sku);
+        if(sku){
+            const resultado = this.service.obterProdutos()
+                    .filter( produto => produto.sku === sku)
+            if(resultado.length === 1){
+                const produtoEncontrado = resultado[0];
+                this.setState({...produtoEncontrado});
+            }
+        }
     }
 
     render(){
+        console.log(this.props);
+        let sku  = this.props.sku;
+        console.log ("props.sku -> "+sku)
         return(
             <div className="card">
                 <div className="card-header">
