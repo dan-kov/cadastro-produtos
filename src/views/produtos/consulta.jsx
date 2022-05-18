@@ -25,6 +25,11 @@ export default class ConsultaProdutos extends React.Component{
         //this.props.history.push(`/cadastro-produtos/${sku}`);
     }
 
+    deletar = (sku) => {
+        const produtos = this.service.deletar(sku);
+        this.setState({produtos});
+    }
+
 
     render(){
         return(
@@ -58,7 +63,7 @@ export default class ConsultaProdutos extends React.Component{
                                                     <button className="btn btn-primary">Editar</button> 
                                                 </Link>
                                             }
-                                            <button className="btn btn-danger">Remover</button>
+                                            <button onClick={() => this.deletar(produto.sku)} className="btn btn-danger">Remover</button>
                                         </th>
                                     </tr>
                                 )})

@@ -8,7 +8,8 @@ const estadoInicial = {
     preco: 0,
     fornecedor: '',
     mensagemSucesso : false,
-    erros: []
+    erros: [],
+    atualizando : false
 }
 
 export default class CadastroProduto extends React.Component{
@@ -59,7 +60,8 @@ export default class CadastroProduto extends React.Component{
                     .filter( produto => produto.sku === sku)
             if(resultado.length === 1){
                 const produtoEncontrado = resultado[0];
-                this.setState({...produtoEncontrado});
+                this.setState({...produtoEncontrado, atualizando:true});
+
             }
         }
     }
@@ -71,7 +73,8 @@ export default class CadastroProduto extends React.Component{
         return(
             <div className="card">
                 <div className="card-header">
-                    Cadastro de Produto
+                    { this.state.atualizando ? 'Atualização' : 'Cadastro'}
+                    &nbsp; de Produto
                 </div>
                 <div className="card-body">
 
@@ -104,7 +107,7 @@ export default class CadastroProduto extends React.Component{
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label>SKU: </label>
-                                <input type="text" className="form-control" value={this.state.sku} name="sku" onChange={this.onChange} />
+                                <input type="text" className="form-control" value={this.state.sku} name="sku" onChange={this.onChange} disabled={this.state.atualizando} />
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -139,7 +142,7 @@ export default class CadastroProduto extends React.Component{
 
                     <div className="row mt-3">
                         <div className="col-md-1">
-                            <button className="btn btn-primary" onClick={this.onSubmit}>Salvar</button>
+                            <button className="btn btn-primary" onClick={this.onSubmit}>{this.state.atualizando ? 'Salvar' : 'Alterar'}</button>
                         </div>
 
                         <div className="col-md-1">
