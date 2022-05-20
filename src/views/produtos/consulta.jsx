@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProdutoService from "../../app/produtoService";
+import Card from "../../components/card";
 
 
 export default class ConsultaProdutos extends React.Component{
@@ -33,11 +34,7 @@ export default class ConsultaProdutos extends React.Component{
 
     render(){
         return(
-            <div className="card">
-                <div className="card-header" >
-                    Lista de Produtos
-                </div>
-                <div className="card-body">
+            <Card header="Lista de Produtos">
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -70,8 +67,7 @@ export default class ConsultaProdutos extends React.Component{
                             }
                         </tbody>
                     </table>
-                </div>
-            </div>
+            </Card>
         )
     }
 }
